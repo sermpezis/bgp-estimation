@@ -1,0 +1,296 @@
+                                     LANDER:internet address hitlist it86w-20190624
+
+   From Predict
+   Jump to navigation Jump to search
+
+   README version: 10632, last modified: 2019-08-14.
+
+   This file describes the trace dataset "internet_address_hitlist_it86w-20190624", generated on 2019-08-14, provided
+   by the LANDER project.
+
+   The most recent version of this file can be found on-line at
+   https://wiki.isi.edu/predict/index.php?title=internet_address_hitlist_it86w-20190624.
+
+   [ ]
+
+Contents
+
+     * 1 LANDER Metadata
+     * 2 Dataset Contents
+     * 3 Data Format
+     * 4 Prior Work
+     * 5 Citation
+     * 6 User Annotations
+
+LANDER Metadata
+
+   (https://wiki.isi.edu/predict/index.php?title=LANDER:internet_address_hitlist_it86w-20190624/landermeta)
+
++-------------------------------------------------------------------------------------------------------------------------+
+|dataSetName              |internet_address_hitlist_it86w-20190624                                                        |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|isCSUdataset             |false                                                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|status                   |usc-web-and-predict                                                                            |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|shortDesc                |IPhitlist based on census up to it86w                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|longDesc                 |This IP hitlist was generated on 2019-08-14, based on census data from it71w to it86w. Hitlist |
+|                         |contains one representative IP address for each /24 block which has appeared to have responsive|
+|                         |addresses during it71w - it86w.                                                                |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|datasetClass             |Quasi-Restricted                                                                               |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|commercialAllowed        |true                                                                                           |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|datasetCategory          |Address Space Status Data                                                                      |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|datasetSubCategory       |IP Hit Lists                                                                                   |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|requestReviewRequired    |true                                                                                           |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|productReviewRequired    |false                                                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|ongoingMeasurement       |false                                                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|submissionMethod         |Upload                                                                                         |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|collectionStartDate      |2016-08-03                                                                                     |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|collectionStartTime      |00:00:00                                                                                       |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|collectionEndDate        |2019-07-26                                                                                     |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|collectionEndTime        |00:00:00                                                                                       |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|availabilityStartDate    |2019-08-20                                                                                     |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|availabilityStartTime    |                                                                                               |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|availabilityEndDate      |2020-01-01                                                                                     |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|availabilityEndTime      |00:00:00                                                                                       |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|anonymization            |none                                                                                           |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|archivingAllowed         |                                                                                               |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|keywords                 |address-collection, no-IP-anonymization, topology                                              |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|format                   |text                                                                                           |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|access                   |https                                                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|hostName                 |USC-LANDER                                                                                     |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|providerName             |University of Southern California-Information Sciences Institute                               |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|groupingId               |internet address hitlists                                                                      |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|groupingSummaryFlag      |false                                                                                          |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|retrievalInstructions    |                                                                                               |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|byteSize                 |82922922                                                                                       |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|expirationDays           |14                                                                                             |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|uncompressedSize         |366742374                                                                                      |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|impactDoi                |10.23721/109/1504225                                                                           |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+|privateAccessInstructions|See http://www.isi.edu/ant/traces/index.html#getting_datasets for information on obtaining this|
+|                         |dataset.                                                                                       |
+|                         |See https://wiki.isi.edu/predict/index.php?title=LANDER:internet_address_hitlist_it86w-20190624|
+|                         |for details on this dataset.                                                                   |
++-------------------------------------------------------------------------------------------------------------------------+
+
+Dataset Contents
+
+   iana-timestamp-ipv4-address-space.{txt,fsdb}                 iana allocation which this hitlist covers (old
+                                                                hitlists have .txt, new - .fsdb)
+   internet_address_hitlist_it86w-20190624.README.txt           copy of this README
+   internet_address_hitlist_it86w-20190624.fsdb.bz2             bzip2 compressed FSDB text file
+   internet_address_hitlist_it86w-20190624.geolocation.fsdb.bz2 bzip2 compressed FSDB text file of geolocated blocks
+                                                                using MaxMind data (if available)
+   .sha1sum                                                     SHA-1 checksum
+
+   The file ".sha1sum" contains SHA1 checksums of individual compressed files. The integrity of the distribution thus
+   can be checked by independently calculating SHA1 sums of files and comparing them with those listed in the file.
+   If you have the sha1sum utility installed on your system, you can do that by executing:
+
+     sha1sum --check .sha1sum
+
+   This has to be done before files are uncompressed.
+
+Data Format
+
+   Format of hitlist files is described here:
+   http://www.isi.edu/ant/traces/topology/ip_hitlists/format_description.html
+
+   The format is flat ascii text FSDB format.
+
+Prior Work
+
+   This IP hitlist builds on prior work by Olaf Maennel et al., used in their paper:
+
+   Randy Bush, Olaf Maennel, Matthew Roughan, and Steve Uhlig. Internet optometry: assessing the broken glasses in
+   Internet reachability. Internet Measurement Conference 2009, Chicago, USA, November 2009.
+
+   Their work in turn builds on the hitlist generated by CAIDA as part of their Skitter tool:
+   http://www.caida.org/tools/measurement/skitter used in several prior papers, including:
+
+   B. Huffaker, M. Fomenkov, D. Moore, and k. claffy Macroscopic analyses of the infrastructure: measurement and
+   visualization of Internet connectivity and performance. Passive and Active Network Measurement Workshop, April
+   2001
+
+   This hitlist extends that work using Internet census data, as described in
+
+   John Heidemann, Yuri Pradkin, Ramesh Govindan, Christos Papadopoulos, Genevieve Bartlett, and Joseph Bannister.
+   Census and Survey of the Visible Internet. Proceedings of the ACM Internet Measurement Conference, Oct. 2008.
+   http://doi.acm.org/10.1145/1452520.1452542
+
+   The paper describing the hitlist methodology:
+
+   Xun Fan and John Heidemann. Selecting Representative IP Addresses for Internet Topology Studies. In proceedings of
+   the ACM Internet Measurement Conference (IMC). Melbourne, Australia, ACM. November, 2010.
+   (http://www.isi.edu/~xunfan/research/Fan10a.pdf)
+
+   This particularly hitlist is based on Internet Addresses Census datasets, PREDICT ID
+   USC-LANDER/LANDER:internet_address_census_it71w-20160803 through LANDER:internet_address_census_it86w-20190624.
+   (Traces taken 2016-08-03 to 2019-07-26). Provided by the USC/LANDER project. http://www.isi.edu/ant/lander.
+
+Citation
+
+   If you use this trace to conduct additional research, please cite it as:
+
+   Internet Addresses Hitlist Dataset, PREDICT ID: USC-LANDER/internet_address_hitlist_it86w-20190624/rev10632.
+   Provided by the USC/LANDER project (http://www.isi.edu/ant/lander).
+
+User Annotations
+
+   Suggestion: Edit the annotations at
+   https://wiki.isi.edu/predict/index.php?title=LANDERNOTES:internet_address_hitlist_it86w-20190624action=edit
+
+   Our hitlist has been used in several ongoing or published research works, including
+
+   Pietro Marchetta, Walter de Donato, Antonio Pescapé. Detecting Third-party Addresses in Traceroute IP Paths.
+   Poster at ACM SIGCOMM 2012 (SIGCOMM '12). To Appear.
+
+   Retrieved from
+   "https://wiki.isi.edu/predict/index.php?title=LANDER:internet_address_hitlist_it86w-20190624oldid=10632"
+   Categories:
+
+     * LANDER:ImpactClass:Quasi-Restricted
+     * LANDER:ImpactCategory:Address Space Status Data
+     * LANDER:ImpactCategory:Address Space Status Data/IP Hit Lists
+     * Datasets
+     * LANDER
+     * LANDER:Datasets
+     * LANDER:Datasets:AddressSpace
+     * LANDER:Datasets:AddressSpace:Hitlists
+
+Navigation menu
+
+  Personal tools
+
+     * Wikiexport
+     * Talk
+     * Preferences
+     * Watchlist
+     * Contributions
+     * Log out
+
+  Namespaces
+
+     * LANDER
+     * Discussion
+
+   [ ]
+
+  Variants
+
+  Views
+
+     * Read
+     * Edit
+     * View history
+     * Watch
+
+   [ ]
+
+  More
+
+     * Move
+
+  Search
+
+   _____________________ [ Search ] [ Go ]
+
+  Navigation
+
+     * Main page
+     * Providers
+     * Datasets
+     * Results
+     * Categories
+     * Recent changes
+     * Random page
+     * Help
+
+  Tools
+
+     * What links here
+     * Related changes
+     * Upload file
+     * Special pages
+     * Permanent link
+     * Page information
+
+
+
+ADDITION FROM https://ant.isi.edu/datasets/ip_hitlists/format.html:
+
+This web page documents the format of our IP Address Space Hitlist. Our address space hitlist is available upon request.
+
+An IP Address Space Hitlist is a list of IP addresses in the Internet that we believe are reachable via ping. Topology studies and routing often look at traceroutes to these addresses to understand internet topology.
+
+Example topology studies and tools include CADIA's Archipelago (and previously skitter), studies of routing on reachability (for example, "Testing the reachability of (new) address space").
+
+Our hitlists are primiarily dervied from our Address Censuses, and we are updating it using new census data is it comes in. In addition, to start our list, we began with the data from Olaf Maennel (and Randy Bush, Matthew Roughan, and Steve Uhlig, used in their paper "Internet Optometry: Assessing the Broken Glasses in Internet Reachability".), and our understanding is that this list dates back to the CAIDA Skitter list started by kc claffy et al.
+
+The selection goals and methodology for our list:
+
+    Our goal is to provide representatives that are responsive, complete and stable.
+
+    By complete, we mean we report one representative address for every allocated /24.
+
+    By stable, we mean and that the hitlist is reasonably stable over time.
+    To promote responsivness, we select the one IP address out of each /24 prefix that appeared most responsive historically. We do not guarantee that that address responded in the most recent census, but we bias our selection to favor recent results.
+    To be complete , For /24s that used to respond: If a prefix used to respond, but hasn't responded recently, we arbitrarily pick a random address in that prefix and report a score of -1.
+    To be complete , If we have never see any responses for that prefix, we just take x.x.x.1 as the representative, and with score -2 (see detail below). We report allocated /24 prefix according to IANA address allocation (http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.txt).
+    To promote stabililty, we only switch addresses when they improve the score significantly (by 34).
+
+Currently we consider a history of 16 prior censuses.
+
+Pre-release hitlists (alpha and beta) omit some results. Alpha hitlists do not include representatives with scores -1 or -2; beta hitlists omit representatives with scores of -2.
+
+The format is a simple text file, one entry per line, with fields separated by tabs. The first line is a header indicating the columns' names:
+
+#fsdb -F t hex_ip score ip
+
+The meaning of each column:
+
+    hex_ip: the representative IP address from that prefix, in hexadeciml
+    score: our estimation of the quality of the result, from 0 to 99. A 99 represents a perfect response for all the history we consider. Scores are not linear (a score of 50 is not necessarily half as reponsive as a score of 99). As a special case, scores less than 0 mean particular things: -1 means there were no positive responses for any address in the prefix for the recent history. -2 means there have never been any positive responses.
+    ip: the representative IP address for that prefix, in dotted-quad notation.
+
+Here's a partial example of a file (with fake IP addresses):
+```
+	#fsdb -F t hex_ip score ip
+	0a0025d6        99      10.0.37.214
+	0a002615        99      10.0.38.21
+	0a002713        -1      10.0.39.19
+	0a0029b2        38      10.0.41.178
+	0a002a01        -2      10.0.42.1
+```
