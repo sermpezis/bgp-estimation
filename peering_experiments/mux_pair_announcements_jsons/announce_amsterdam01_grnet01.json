@@ -1,0 +1,24 @@
+{
+  "184.164.243.0/24": {
+    "announce": [
+      {
+        "muxes": [
+          "amsterdam01"
+        ],
+        "prepend": [
+          61574
+        ],
+        "origin": 47065
+      },
+      {
+        "muxes": [
+          "grnet01"
+        ],
+        "prepend": [
+          61575
+        ],
+        "origin": 47065
+      }
+    ]
+  }
+}

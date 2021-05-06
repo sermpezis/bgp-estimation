@@ -1,0 +1,79 @@
+{
+  "source": "https://en.wikipedia.org/wiki/Autonomous_system_(Internet)",
+  "16-bit": [
+    {
+      "start":  0,
+      "end": 0,
+      "description": "Reserved",
+      "reference": "RFC1930, RFC7607"
+    },
+    {
+      "start": 1,
+      "end": 23455,
+      "description": "Public ASN's",
+      "reference": ""
+    },
+    {
+      "start": 23456,
+      "end": 23456,
+      "description": "Reserved for AS Pool Transition",
+      "reference": "RFC6793"
+    },
+    {
+      "start": 23457,
+      "end": 64495,
+      "description": "Public ASN's",
+      "reference": ""
+    },
+    {
+      "start": 64496,
+      "end": 64511,
+      "description": "Reserved for use in documentation/sample code",
+      "reference": "RFC5398"
+    },
+    {
+      "start": 64512,
+      "end": 65534,
+      "description": "Reserved",
+      "reference": "RFC1930, RFC6996"
+    },
+    {
+      "start": 65535,
+      "end": 65535,
+      "description": "Reserved",
+      "reference": "RFC7300"
+    }
+  ],
+  "32-bit": [
+    {
+      "start":  65536,
+      "end": 65551,
+      "description": "Reserved for use in documentation and sample code",
+      "reference": "RFC4893, RFC5398"
+    },
+    {
+      "start": 65552,
+      "end": 131071,
+      "description": "Reserved",
+      "reference": ""
+    },
+    {
+      "start": 131072,
+      "end": 4199999999,
+      "description": "Public 32-bit ASN's",
+      "reference": ""
+    },
+    {
+      "start": 4200000000,
+      "end": 4200000000,
+      "description": "Reserved for private use",
+      "reference": "RFC6996"
+    },
+    {
+      "start": 4294967295,
+      "end": 4294967295,
+      "description": "Reserved",
+      "reference": "RFC7300"
+    }
+  ]
+}

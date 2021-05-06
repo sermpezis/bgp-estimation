@@ -1,0 +1,52 @@
+#!/bin/bash
+set -eu
+
+program=$(basename "$0")
+export progdir=$(cd "$(dirname "$0")"; pwd -P)
+. "$progdir/scripts/peering-config"
+
+usage () {
+    cat <<-EOF
+usage: $0 openvpn|bgp|bgp6|prefix
+
+openvpn     Control OpenVPN tunnels
+
+bgp         Control IPv4 BGP router (BIRD)
+
+bgp6        Control IPv6 BGP router (BIRD6)
+
+prefix      Control prefix announcements
+
+proxy	    Control proxy for containers
+
+EOF
+    exit 0
+}
+
+test $# -ge 1 || usage
+
+case $1 in
+openvpn)
+    shift
+    "$progdir"/scripts/peering-openvpn "$@"
+    ;;
+bgp)
+    shift
+    "$progdir"/scripts/peering-bgp "$@"
+    ;;
+bgp6)
+    shift
+    "$progdir"/scripts/peering-bgp v6 "$@"
+    ;;
+prefix)
+    shift
+    "$progdir"/scripts/peering-prefix "$@"
+    ;;
+proxy)
+    shift
+    "$progdir"/scripts/peering-proxy "$@"
+    ;;
+*)
+    usage
+    ;;
+esac

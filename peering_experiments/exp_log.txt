@@ -1,0 +1,196 @@
+1) isi01 - ufmg01 (25/11/2019) --> done
+	1.1) isi01 - announce --> done
+	1.2) isi01 - withdraw --> done
+	1.3) ufmg01 - announce --> done
+	1.4) ufmg01 - withdraw --> done
+	1.5) isi01 - ufmg01 - announce --> done
+	1.5) isi01 - ufmg01 - withdraw --> done
+2) amsterdam01 - isi01 (25/11/2019) --> done
+	2.1) amsterdam01 - announce --> done
+	2.2) amsterdam01 - withdraw --> done
+	2.3) isi01 - announce --> done
+	2.4) isi01 - withdraw --> done
+	2.5) amsterdam01 - isi01 - announce --> done
+	2.5) amsterdam01 - isi01 - withdraw --> done
+3) ufmg01 - uw01 (26/11/2019) --> done
+	3.1) ufmg01 - announce --> done
+	3.2) ufmg01 - withdraw --> done
+	3.3) uw01 - announce --> done
+	3.4) uw01 - withdraw --> done
+	3.5) ufmg01 - uw01 - announce --> done
+	3.5) ufmg01 - uw01 - withdraw --> done
+4) phoenix01 - ufmg01 (26/11/2019) --> done
+	4.1) phoenix01 - announce --> done
+	4.2) phoenix01 - withdraw --> done
+	4.3) ufmg01 - announce --> done
+	4.4) ufmg01 - withdraw --> done
+	4.5) phoenix01 - ufmg01 - announce --> done
+	4.5) phoenix01 - ufmg01 - withdraw --> done
+5) grnet01 - phoenix01 (27/11/2019) --> done
+	5.1) grnet01 - announce --> done
+	5.2) grnet01 - withdraw --> done
+	5.3) phoenix01 - announce --> done
+	5.4) phoenix01 - withdraw --> done
+	5.5) grnet01 - phoenix01 - announce --> done
+	5.5) grnet01 - phoenix01 - withdraw --> done
+6) amsterdam01 - grnet01 (27/11/2019) --> done
+	6.1) amsterdam01 - announce --> done
+	6.2) amsterdam01 - withdraw --> done
+	6.3) grnet01 - announce --> done
+	6.4) grnet01 - withdraw --> done
+	6.5) amsterdam01 - grnet01 - announce --> done
+	6.5) amsterdam01 - grnet01 - withdraw --> done
+7) grnet01 - seattle01 (27/11/2019) --> done
+	7.1) grnet01 - announce --> done
+	7.2) grnet01 - withdraw --> done
+	7.3) seattle01 - announce --> done
+	7.4) seattle01 - withdraw --> done
+	7.5) grnet01 - seattle01 - announce --> done
+	7.5) grnet01 - seattle01 - withdraw --> done
+8) phoenix01 - uw01 (28/11/2019) --> done
+	8.1) phoenix01 - announce --> done
+	8.2) phoenix01 - withdraw --> done
+	8.3) uw01 - announce --> done
+	8.4) uw01 - withdraw --> done
+	8.5) phoenix01 - uw01 - announce --> done
+	8.5) phoenix01 - uw01 - withdraw --> done
+9) seattle01 - ufmg01 (28/11/2019) --> done
+	9.1) seattle01 - announce --> done
+	9.2) seattle01 - withdraw --> done
+	9.3) ufmg01 - announce --> done
+	9.4) ufmg01 - withdraw --> done
+	9.5) seattle01 - ufmg01 - announce --> done
+	9.5) seattle01 - ufmg01 - withdraw --> done
+10) amsterdam01 - uw01 (28/11/2019) --> done
+	10.1) amsterdam01 - announce --> done
+	10.2) amsterdam01 - withdraw --> done
+	10.3) uw01 - announce --> done
+	10.4) uw01 - withdraw --> done
+	10.5) amsterdam01 - uw01 - announce --> done
+	10.5) amsterdam01 - uw01 - withdraw --> done
+11) isi01 - seattle01 (29/11/2019) --> done
+	11.1) isi01 - announce --> done
+	11.2) isi01 - withdraw --> done
+	11.3) seattle01 - announce --> done
+	11.4) seattle01 - withdraw --> done
+	11.5) isi01 - seattle01 - announce --> done
+	11.5) isi01 - seattle01 - withdraw --> done
+12) isi01 - uw01 (30/11/2019) --> done
+	12.1) isi01 - announce --> done
+	12.2) isi01 - withdraw --> done
+	12.3) uw01 - announce --> done
+	12.4) uw01 - withdraw --> done
+	12.5) isi01 - uw01 - announce --> done
+	12.5) isi01 - uw01 - withdraw --> done
+13) amsterdam01 - clemson01 (30/11/2019) --> done
+	13.1) amsterdam01 - announce --> done
+	13.2) amsterdam01 - withdraw --> done
+	13.3) clemson01 - announce --> done
+	13.4) clemson01 - withdraw --> done
+	13.5) amsterdam01 - clemson01 - announce --> done
+	13.5) amsterdam01 - clemson01 - withdraw --> done
+14) amsterdam01 - phoenix01 (1/12/2019) --> done
+	14.1) amsterdam01 - announce --> done
+	14.2) amsterdam01 - withdraw --> done
+	14.3) phoenix01 - announce --> done
+	14.4) phoenix01 - withdraw --> done
+	14.5) amsterdam01 - phoenix01 - announce --> done
+	14.5) amsterdam01 - phoenix01 - withdraw --> done
+15) grnet01 - uw01 (1/12/2019) --> done
+	15.1) grnet01 - announce --> done
+	15.2) grnet01 - withdraw --> done
+	15.3) uw01 - announce --> done
+	15.4) uw01 - withdraw --> done
+	15.5) grnet01 - uw01 - announce --> done
+	15.5) grnet01 - uw01 - withdraw --> done
+16) grnet01 - isi01 (2/12/2019) --> done
+	16.1) grnet01 - announce --> done
+	16.2) grnet01 - withdraw --> done
+	16.3) isi01 - announce --> done
+	16.4) isi01 - withdraw --> done
+	16.5) grnet01 - isi01 - announce --> done
+	16.5) grnet01 - isi01 - withdraw --> done
+17) clemson01 - isi01 (2/12/2019) --> done
+	17.1) clemson01 - announce --> done
+	17.2) clemson01 - withdraw --> done
+	17.3) isi01 - announce --> done
+	17.4) isi01 - withdraw --> done
+	17.5) clemson01 - isi01 - announce --> done
+	17.5) clemson01 - isi01 - withdraw --> done
+18) seattle01 - uw01 (4/12/2019) --> done
+	18.1) seattle01 - announce --> done
+	18.2) seattle01 - withdraw --> done
+	18.3) uw01 - announce --> done
+	18.4) uw01 - withdraw --> done
+	18.5) seattle01 - uw01 - announce --> done
+	18.5) seattle01 - uw01 - withdraw --> done
+19) clemson01 - seattle01 (4/12/2019) --> done
+	19.1) clemson01 - announce --> done
+	19.2) clemson01 - withdraw --> done
+	19.3) seattle01 - announce --> done
+	19.4) seattle01 - withdraw --> done
+	19.5) clemson01 - seattle01 - announce --> done
+	19.5) clemson01 - seattle01 - withdraw --> done
+20) amsterdam01 - seattle01 (5/12/2019) --> done
+	20.1) amsterdam01 - announce --> done
+	20.2) amsterdam01 - withdraw --> done
+	20.3) seattle01 - announce --> done
+	20.4) seattle01 - withdraw --> done
+	20.5) amsterdam01 - seattle01 - announce --> done
+	20.5) amsterdam01 - seattle01 - withdraw --> done
+21) grnet01 - ufmg01 (6/12/2019) --> done
+	21.1) grnet01 - announce --> done
+	21.2) grnet01 - withdraw --> done
+	21.3) ufmg01 - announce --> done
+	21.4) ufmg01 - withdraw --> done
+	21.5) grnet01 - ufmg01 - announce --> done
+	21.5) grnet01 - ufmg01 - withdraw --> done
+22) amsterdam01 - ufmg01 (6/12/2019) --> done
+	22.1) amsterdam01 - announce --> done
+	22.2) amsterdam01 - withdraw --> done
+	22.3) ufmg01 - announce --> done
+	22.4) ufmg01 - withdraw --> done
+	22.5) amsterdam01 - ufmg01 - announce --> done
+	22.5) amsterdam01 - ufmg01 - withdraw --> done
+23) clemson01 - uw01 (7/12/2019) --> done
+	23.1) clemson01 - announce --> done
+	23.2) clemson01 - withdraw --> done
+	23.3) uw01 - announce --> done
+	23.4) uw01 - withdraw --> done
+	23.5) clemson01 - uw01 - announce --> done
+	23.5) clemson01 - uw01 - withdraw --> done
+24) isi01 - phoenix01 (7/12/2019) --> done
+	24.1) isi01 - announce --> done
+	24.2) isi01 - withdraw --> done
+	24.3) phoenix01 - announce --> done
+	24.4) phoenix01 - withdraw --> done
+	24.5) isi01 - phoenix01 - announce --> done
+	24.5) isi01 - phoenix01 - withdraw --> done
+25) clemson01 - ufmg01 (8/12/2019) --> done
+	25.1) clemson01 - announce --> done
+	25.2) clemson01 - withdraw --> done
+	25.3) ufmg01 - announce --> done
+	25.4) ufmg01 - withdraw --> done
+	25.5) clemson01 - ufmg01 - announce --> done
+	25.5) clemson01 - ufmg01 - withdraw --> done
+26) phoenix01 - seattle01 (TBD) --> pending
+	26.1) phoenix01 - announce --> pending
+	26.2) phoenix01 - withdraw --> pending
+	26.3) seattle01 - announce --> pending
+	26.4) seattle01 - withdraw --> pending
+	26.5) phoenix01 - seattle01 - announce --> pending
+	26.5) phoenix01 - seattle01 - withdraw --> pending
+27) clemson01 - phoenix01 (TBD) --> pending
+	27.1) clemson01 - announce --> pending
+	27.2) clemson01 - withdraw --> pending
+	27.3) phoenix01 - announce --> pending
+	27.4) phoenix01 - withdraw --> pending
+	27.5) clemson01 - phoenix01 - announce --> pending
+	27.5) clemson01 - phoenix01 - withdraw --> pending
+28) clemson01 - grnet01 (TBD) --> pending
+	28.1) clemson01 - announce --> pending
+	28.2) clemson01 - withdraw --> pending
+	28.3) grnet01 - announce --> pending
+	28.4) grnet01 - withdraw --> pending
+	28.5) clemson01 - grnet01 - announce --> pending
+	28.5) clemson01 - grnet01 - withdraw --> pending

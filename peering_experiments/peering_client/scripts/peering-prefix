@@ -1,0 +1,259 @@
+#!/bin/bash
+set -eu
+
+# program=$(basename $0)
+# progdir=$(cd $(dirname $0); pwd -P)
+# . $progdir/peering-config
+
+mux=all
+poison=0
+prepend=0
+origin=0
+prefix=invalid
+communities=()
+large_communities=()
+
+
+check_valid_asn () {  # {{{
+    local asn=$1
+    if [[ $asn -ne 0 ]] ; then
+        if [[ ! $asn =~ [0-9]+ ]] ; then
+            die "error [AS ($asn) should be a number]"
+        elif [[ $asn -lt 1 ]] ; then
+            die "error [AS ($asn) should be a positive number]"
+        fi
+    fi
+}  # }}}
+
+
+do_announce () {  #{{{
+    local mux=$1
+    local filterfn="$bird_filters/export_${mux}_$prefixfn.conf"
+    echo "if ( net = $prefix ) then {" > "$filterfn"
+    if [ $prepend -eq 0 ] && [ $origin -ne 0 ] ; then
+        prepend=1
+    fi
+    if [ $poison -ne 0 ] ; then
+        if [ $prepend -ne 0 ] ; then die "error [-p and \$prepend != 0]" ; fi
+        if [ $origin -ne 0 ] ; then die "error [-p and \$origin != 0]" ; fi
+        echo "    bgp_path.prepend(47065);" >> "$filterfn"
+        echo "    bgp_path.prepend($poison);" >> "$filterfn"
+    elif [ $prepend -ne 0 ] ; then
+        if [ $origin -eq 0 ] ; then origin=47065 ; fi
+        for _i in $(seq 1 $prepend) ; do
+            echo "    bgp_path.prepend($origin);" >> "$filterfn"
+        done
+    fi
+    if [[ ${communities[@]:-undef} != undef ]] ; then
+        for comm in "${communities[@]}" ; do
+            echo "    bgp_community.add(($comm));" >> "$filterfn"
+        done
+    fi
+    if [[ ${large_communities[@]:-undef} != undef ]] ; then
+        for comm in "${large_communities[@]}" ; do
+            echo "    bgp_large_community.add(($comm));" >> "$filterfn"
+        done
+    fi
+    echo "    accept;" >> "$filterfn"
+    echo "}" >> "$filterfn"
+    filterfn=$bird_routes/$prefixfn
+    echo "route $prefix unreachable;" > "$filterfn"
+}  #}}}
+
+
+usage () {  # {{{
+    cat <<-EOF
+Usage: peering prefix announce|withdraw [-m mux]
+                                        [-p poison | [-P prepend] [-o origin]]
+                                        [-c ASN,COMM] ... [-c ASN,COMM]
+                                        [-l ASN,X,Y] ... [-l ASN,X,Y]
+                                        prefix
+
+Options can be specified in any order, but announce|withdraw must
+be the first argument and prefix must be the last.
+
+announce    Announce prefix to one or all muxes.
+withdraw    Withdraw prefix to one or all muxes.
+
+-m mux      Control to which mux the prefix should be announced
+            or withdrawn.  [default: $mux]
+-p asn      Prepend announcement to include the given ASN in the
+            AS-path and trigger BGP loop prevention (poisoning).
+            Also known as BGP poisoning.  [default: do not poison]
+-P N        Prepend origin (given with -o) N times.  Cannot be
+            combined with -p; can be combined with -o.  [default: 0]
+-o asn      Prepend announcement to include the given ASN as the
+            origin of the announcement.  Cannot be combined with -p;
+            sets -P to 1 if not specified.  [default: unchanged (47065)]
+
+-c ASN,COMM Attach community ASN,COMM to the announcement.  Can be used
+            multiple times to attach multiple communities.  Only
+            PEERING-operated ASes are allowed for ASN.  Both ASN and
+            COMM are limited to 16-bit numbers.
+
+            Communities in the range 47065,0--2000 have special meaning:
+
+            - Community 47065,0 indicates that an announcement should be
+              announced to remote peers through AL2S.
+            - Communities 47065,X (1 <= X <= 1000) indicate that the
+              announcement should be exported to peer X.
+            - Communities 47065,1000+X (1 <= X <= 1000) indicate that
+              the announcement should not be exported to the peer X.
+
+            Announcements through each peer only see their filtering
+            community.  The default behavior is to announce to all
+            peers.  See https://peering.usc.edu/peers for the list of
+            peers and their IDs.
+
+            Special communities in the range 65535,65281--65284 defined
+            in RFCs 1997 and 3765 are filtered and have no effect.
+
+            A maximum of 20 communities (not including the special
+            communities above) is allowed in any announcement.  If the
+            number of communities exceeds 20, all communities will be
+            filtered.
+
+-l ASN,F,V  Attach large community ASN,F,V to the announcement.  Can be
+            used multiple times to attach multiple large communities.
+            (Large communities are filtered by default and allowed upon
+            request.)
+
+prefix      Choose the prefix to operate on.  Make sure the prefix
+            has been allocated to you, or your announcement will be
+            filtered by PEERING muxes.
+
+EOF
+    exit 0
+}  # }}}
+
+
+test $# -ge 2 || usage
+test $EUID -eq 0 || die "The BIRD BGP daemon requires root access."
+
+OPTIND=2  # {{{
+while getopts "m:p:P:o:c:C:l:" opt "$@" ; do
+case $opt in
+m)  mux=$OPTARG ;;
+p)  poison=$OPTARG ;;
+P)  prepend=$OPTARG ;;
+o)  origin=$OPTARG ;;
+c|C)
+    if ! [[ $OPTARG =~ [0-9]+,[0-9]+ ]] ; then
+        die "error [-c requires a string that matches '[0-9]+,[0-9]+']"
+    fi
+    ctoken=${OPTARG%,*}
+    if [[ $ctoken -gt 65535 || $ctoken -lt 0 ]] ; then
+        die "error [-c ASN:COMM accepts only 16-bit numbers]"
+    fi
+    ctoken=${OPTARG#*,}
+    if [[ $ctoken -gt 65535 || $ctoken -lt 0 ]] ; then
+        die "error [-c ASN:COMM accepts only 16-bit numbers]"
+    fi
+    communities+=($OPTARG)
+    ;;
+l)
+    if ! [[ $OPTARG =~ [0-9]{1,9},[0-9]{1,9},[0-9]{1,9} ]] ; then
+        die "error [-l requires a string that matches '[0-9]{1,9},[0-9]{1,9},[0-9]{1,9}']"
+    fi
+    large_communities+=($OPTARG)
+    ;;
+*)  usage
+esac
+done  # }}}
+
+
+declare -A mux2dev
+while read -r fmux fdev ; do
+    mux2dev[$fmux]=$fdev
+done < "$mux2dev_db"
+
+if [ "$mux" != all ] && [ "${mux2dev[$mux]:-unset}" = unset ] ; then
+    die "error [mux unknown: $mux]"
+fi
+
+check_valid_asn "$poison"
+check_valid_asn "$origin"
+
+if [[ $prepend -lt 0 || $prepend -gt 3 ]] ; then
+    die "error [can prepend only 1, 2, or 3 times]"
+fi
+
+if [[ $poison -ne 0 && ($origin -ne 0 || $prepend -ne 0) ]] ; then
+    die "error [cannot -p with -o or -P]"
+fi
+
+if [ ! -e "$prefix_db" ] ; then
+    echo "error: $prefix_db not found."
+    echo "list the IPv4 prefixes you will announce in $prefix_db."
+    die "create an empty file if you will not announce IPv4 prefixes."
+fi
+
+if [ ! -e "$prefix6_db" ] ; then
+    echo "error: $prefix6_db not found."
+    echo "list the IPv6 prefixes you will announce in $prefix6_db."
+    die "create an empty file if you will not announce IPv6 prefixes."
+fi
+
+declare -A pfx2id
+while read -r pfx ; do
+    pfx2id[$pfx]=v4
+done < "$prefix_db"
+while read -r pfx ; do
+    pfx2id[$pfx]=v6
+done < "$prefix6_db"
+
+prefix=${!OPTIND:-unset}
+pfxid=${pfx2id[$prefix]:-unset}
+if [[ $pfxid = unset ]] ; then
+    echo "list of configured prefixes:"
+    cat "$prefix_db" "$prefix6_db"
+    die "error [invalid prefix: $prefix]"
+fi
+
+prefixfn=${prefix/\//-}
+pfxdot1=${prefix/\.0\//.1\/}
+minus6=""
+if [[ $prefix =~ : ]] ; then
+    bird_exec=$bird6_exec
+    birdc_exec=$birdc6_exec
+    bird_sock=$bird6_sock
+    bird_cfgs=$bird6_cfgs
+    bird_cfgfile=$bird6_cfgfile
+    bird_routes=$bird6_routes
+    bird_filters=$bird6_filters
+    prefixfn=${prefixfn//:/i}
+    pfxdot1=${prefix/::\//::1\/}
+    minus6="-6"
+    # prefix_db=$prefix6_db
+fi
+
+subcmd=$1
+case $subcmd in
+announce)
+    if [ "$mux" = all ] ; then
+        for cmux in "${!mux2dev[@]}" ; do
+            do_announce "$cmux"
+        done
+    else
+        do_announce "$mux"
+    fi
+    echo "configure \"$bird_cfgfile\"" | $birdc_exec -s "$bird_sock"
+    ip $minus6 addr add "$pfxdot1" dev lo &> /dev/null || true
+    ip $minus6 rule add from "$prefix" table "$kernel_table" pref "$kernel_table" &> /dev/null || true
+    ;;
+withdraw)
+    if [ "$mux" = all ] ; then
+        for cmux in "${!mux2dev[@]}" ; do
+            rm -f "$bird_filters/export_${cmux}_$prefixfn.conf"
+        done
+        ip $minus6 addr del "$pfxdot1" dev lo &> /dev/null || true
+        ip $minus6 rule del from "$prefix" table "$kernel_table" pref "$kernel_table" &> /dev/null || true
+    else
+        rm -f "$bird_filters/export_${mux}_$prefixfn.conf"
+    fi
+    echo "configure \"$bird_cfgfile\"" | $birdc_exec -s "$bird_sock"
+    ;;
+*)
+    usage
+    ;;
+esac
