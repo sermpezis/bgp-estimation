@@ -294,9 +294,10 @@ Writes the following files:
 
 ## Calculate pingable IPs per ASN (and IP-to-ASN mappings)
 
-based on non-public data/IP addresses --> please coordinate with @vkotronis if you want to use your own dataset!
-We used datasets from [ANT-Labs (Internet Address History)](https://ant.isi.edu/datasets/all.html) which we cannot publish.
-Please request them directly.
+In our experiments, we used datasets from [ANT-Labs (Internet Address History)](https://ant.isi.edu/datasets/all.html) which we cannot publish or re-distribute.
+Please request them directly ANT-Labs; they should be available for most researchers. 
+
+The pingable IPs to ASN file is the `asn_to_pingable_ips.json` - in this folder you can find an empty placeholder of this file (e.g., to be filled with ANT-Labs dataset or any other dataset). If you want to use your own dataset or any dataset (other than ANT-Labs), please contact @vkotronis for more information! 
 
 ```
 usage: calculate_pingable_ips_per_asn.py [-h]
