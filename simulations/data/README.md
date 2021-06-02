@@ -2,7 +2,7 @@
 Contain the list of Route Collectors (RIPE RIS and RouteViews), RC, and RIPE Atlas, RA, monitors that provided data in the experiments
 
 ### File ./BGPmon_possible_hijacks_exported.csv 
-Contains the list of the hijacker-victim pairs detected by the BGPmon service, collected in the [BGPstream events analysis](https://gitlab.com/konstantinosarakadakis/BGPstream) project. The first two columns of the csv file correspond to {legitimateASN, hijackerASN} and the third column corresponds to the type of the hijack (0 for exact prefix hijack, and 1 for subprefix hijack). 
+Contains the list of the hijacker-victim pairs detected by the BGPmon service, collected in the [BGPstream events analysis](https://gitlab.com/konstantinosarakadakis/BGPstream) project. The first two columns of the csv file correspond to {hijackerASN, legitimateASN} and the third column corresponds to the type of the hijack (0 for exact prefix hijack, and 1 for subprefix hijack). 
 
 
 ### Folder ./serial_hijackers/

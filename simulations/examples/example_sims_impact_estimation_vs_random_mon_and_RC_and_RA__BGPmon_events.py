@@ -70,8 +70,8 @@ with open(BGPmon_file, 'r') as f:
 		print('simulation step (only valid & all): {} ({}) \r'.format(simulation_step_valid, simulation_step),end='')
 		simulation_step += 1
 		
-		legitimate_AS = int(r[0])
-		hijacker_AS = int(r[1])
+		legitimate_AS = int(r[1])
+		hijacker_AS = int(r[0])
 
 		if (legitimate_AS in list_of_ASNs) and (hijacker_AS in list_of_ASNs):
 			simulation_step_valid += 1
