@@ -3,7 +3,6 @@
 
 
 [1] Pavlos Sermpezis, Vasileios Kotronis, Konstantinos Arakadakis, Athena Vakali, "Estimating the Impact of BGP Prefix Hijacking", IFIP Networking conference 2021.
-
 ([paper](https://arxiv.org/abs/2105.02346), [slides](misc/Sermpezis_presentation_IFIP_Networking_2021.pdf), [video](https://www.youtube.com/watch?v=UG1JVIC5qvA))
 
 
